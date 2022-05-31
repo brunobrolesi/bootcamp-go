@@ -113,3 +113,157 @@ Requisitos:
 - Interface Ecommerce:
 - Deve possuir o método “Total”, onde o mesmo deverá retornar o preço total com base no custo total dos produtos + o adicional citado anteriormente (caso a categoria tenha)
 - Deve possuir o método “Adicionar”, onde o mesmo deve receber um novo produto e adicioná-lo a lista da loja
+
+### 14- Guardar arquivo
+Uma empresa que vende produtos de limpeza precisa de:
+- Implementar uma funcionalidade para guardar um arquivo de texto, com a informação
+de produtos comprados, separados por ponto e vírgula (csv).
+- Deve possuir o ID do produto, preço e a quantidade.
+- Estes valores podem ser hardcodeados ou escritos manualmente em uma variável.
+
+### 15 - Ler Arquivo
+A mesma empresa precisa ler o arquivo armazenado, para isso exige que:
+- Seja impresso na tela os valores tabelados, com título ( à esquerda para o ID e à direita para o Preço e Quantidade), o preço, a quantidade e abaixo do preço o total deve ser exibido (somando preço por quantidade)
+
+### 16 - Rede social
+Uma empresa de mídia social precisa implementar uma estrutura de usuários com funções que acrescentem informações à estrutura. Para otimizar e economizar memória, eles exigem que a estrutura de usuários ocupe o mesmo lugar na memória para o programa principal e para as funções:
+- A estrutura deve possuir os seguintes campos: Nome, Sobrenome, idade, email e senha. 
+
+E devem implementar as seguintes funcionalidades:
+- mudar o nome: me permite mudar o nome e sobrenome
+- mudar a idade: me permite mudar a idade
+- mudar e-mail: me permite mudar o e-mail
+- mudar a senha: me permite mudar a senha
+
+### 17- E-commerce (Parte II)
+Uma grande empresa de vendas na web precisa adicionar funcionalidades para adicionar produtos aos usuários. Para fazer isso, eles exigem que usuários e produtos tenham o mesmo endereço de memória no main do programa e nas funções.
+
+Estruturas necessárias:
+- Usuário: Nome, Sobrenome, E-mail, Produtos (array de produtos).
+- Produto: Nome, preço, quantidade.
+Algumas funções necessárias:
+- Novo produto: recebe nome e preço, e retorna um produto.
+- Adicionar produto: recebe usuário, produto e quantidade, não retorna nada, adiciona o produto ao usuário.
+- Deletar produtos: recebe um usuário, apaga os produtos do usuário.
+
+### 18 - Calcular Preço (Part II)
+Uma empresa nacional é responsável pela venda de produtos, serviços e manutenção. Para isso, eles precisam realizar um programa que seja responsável por calcular o preço total dos Produtos, Serviços e Manutenção. Devido à forte demanda e para otimizar a velocidade, eles exigem que o cálculo da soma seja realizado em paralelo por meio de 3 go routines.
+
+Precisamos de 3 estruturas:
+- Produtos: nome, preço, quantidade.
+- Serviços: nome, preço, minutos trabalhados.
+- Manutenção: nome, preço.
+
+Precisamos de 3 funções:
+- Somar Produtos: recebe um array de produto e devolve o preço total (preço * quantidade).
+- Somar Serviços: recebe uma array de serviço e devolve o preço total (preço * média hora trabalhada, se ele não vier trabalhar por 30 minutos, ele será cobrado como se tivesse trabalhado meia hora).
+- Somar Manutenção: recebe um array de manutenção e devolve o preço total.
+
+Os 3 devem ser executados concomitantemente e ao final o valor final deve ser mostrado na tela (somando o total dos 3).
+
+### 19 - Ordenamento
+Uma empresa de sistemas precisa analisar que algoritmos de ordenamento utilizar para seus serviços.
+Para eles é necessário instanciar 3 arrays com valores aleatórios não ordenados
+- uma matriz de inteiros com 100 valores
+- uma matriz de inteiros com 1000 valores
+- uma matriz de inteiros com 10.000 valores
+
+Para instanciar as variáveis, utilize o rand:
+
+```
+package main
+import (
+  "math/rand"
+)
+
+func main() {
+  variavel := rand.Perm(100)
+  variave2 := rand.Perm(1000)
+  variave3 := rand.Perm(10000)
+}
+```
+Cada um deve ser ordenado por:
+- Inserção
+- grupo
+- seleção
+
+Uma rotina para cada execução de classificação Tenho que esperar terminar a ordenação de 100 números para continuar com a ordenação de 1000 e depois a ordenação de 10000.
+
+Por fim, devo medir o tempo de cada um e mostrar o resultado na tela, para saber qual ordenação ficou melhor para cada arranjo.
+
+## MÓDULO 3 - EXERCÍCIOS
+
+### 1- Estruturar um JSON
+Dependendo do tema escolhido, gere um JSON que atenda as seguintes chaves de acordo
+com o tema.
+
+Os produtos variam por id, nome, cor, preço, estoque, código (alfanumérico), publicação (sim-não), data de criação.
+
+Os usuários variam por id, nome, sobrenome, e-mail, idade, altura, ativo (sim-não), data de criação.
+
+Transações: id, código da transação (alfanumérico), moeda, valor, emissor (string), receptor (string), data da transação.
+
+- Dentro da pasta go-web crie um arquivo theme.json, o nome tem que ser o tema escolhido, ex: products.json.
+- Dentro dele escreva um JSON que permite ter uma matriz de produtos, usuários ou
+transações com todas as suas variantes.
+
+### 2- Olá {nome}
+- Crie dentro da pasta go-web um arquivo chamado main.go
+- Crie um servidor web com Gin que retorne um JSON que tenha uma chave “mensagem” e diga Olá seguido do seu nome.
+- Acesse o end-point para verificar se a resposta está correta.
+
+### 3- Listar Entidade
+Já tendo criado e testado nossa API que nos recebe, geramos uma rota que retorna uma lista do tema escolhido.
+- Dentro do "main.go", crie uma estrutura de acordo com o tema com os campos
+correspondentes.
+- Crie um endpoint cujo caminho é /thematic (plural). Exemplo: “/products”
+- Crie uma handler para o endpoint chamada "GetAll".
+- Crie um slice da estrutura e retorne-a por meio de nosso endpoint.
+
+### 3- Vamos filtrar nosso endpoint
+Dependendo do tema escolhido, precisamos adicionar filtros ao nosso endpoint, ele deve ser
+capaz de filtrar todos os campos.
+- Dentro do manipulador de endpoint, recebi os valores para filtrar do contexto.
+- Em seguida, ele gera a lógica do filtro para nossa matriz.
+- Retorne a matriz filtrada por meio do endpoint.
+
+### 4- Get one endpoint
+Gere um novo endpoint que nos permita buscar um único resultado do array de temas.
+Usando parâmetros de caminho o endpoint deve ser /theme/:id (lembre-se que o tema
+sempre tem que ser plural). Uma vez que o id é recebido, ele retorna a posição
+correspondente.
+- Gere uma nova rota.
+- Gera um manipulador para a rota criada.
+- Dentro do manipulador, procure o item que você precisa.
+- Retorna o item de acordo com o id.
+
+Se você não encontrou nenhum elemento com esse id retorne como código de resposta 404.
+
+### 5- Criar Entidade
+A funcionalidade para criar a entidade deve ser implementada. Se isso acontecer, os
+seguintes passos devem ser seguidos:
+- Crie um endpoint por meio de POST que receba a entidade.
+- Você deve ter um array da entidade na memória (no nível global), no qual todas as
+requisições que são feitas devem ser salvas.
+- No momento de fazer a solicitação, o ID deve ser gerado. Para gerar o ID, devemos
+procurar o ID do último registro gerado, incrementá-lo em 1 e atribuí-lo ao nosso novo
+registro (sem ter uma variável global do último ID).
+
+### 6- Validação de campo
+As validações dos campos devem ser implementadas no momento do envio do pedido, para
+isso devem ser seguidos os seguintes passos:
+- Todos os campos enviados na solicitação devem ser validados, todos os campos são
+obrigatórios
+- Caso algum campo não esteja completo, um código de erro 400 deve ser retornado
+com a mensagem “campo %s é obrigatório”.
+
+(Em %s deve ir o nome do campo que não está completo).
+
+### 7- Validar Token
+Para adicionar segurança à aplicação, o pedido deve ser enviado com um token, para isso
+devem ser seguidos os seguintes passos:
+- No momento do envio da solicitação, deve ser validado que um token é enviado
+- Esse token deve ser validado em nosso código (o token pode ser codificado
+permanentemente).
+- Caso o token enviado não esteja correto, devemos retornar um erro 401 e uma
+mensagem que "você não tem permissão para fazer a solicitação solicitada".
