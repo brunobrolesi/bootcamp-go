@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "name": "Bruno",
+    "lastName": "Brolesi",
+    "email": "brunobrolesi@mail.com",
+    "age": 24,
+    "height": 1.85,
+    "isActive": true,
+    "createdAt": "2021-05-27T20:58:36.608Z"
+  },
+  {
+    "id": 2,
+    "name": "Michelle",
+    "lastName": "Mirany",
+    "email": "michellemirany@mail.com",
+    "age": 23,
+    "height": 1.63,
+    "isActive": true,
+    "createdAt": "2021-06-24T20:58:36.608Z"
+  },
+  {
+    "id": 3,
+    "name": "José",
+    "lastName": "Silva",
+    "email": "josesilva@mail.com",
+    "age": 18,
+    "height": 1.62,
+    "isActive": false,
+    "createdAt": "2020-02-28T20:58:36.608Z"
+  }
+]
